@@ -2,11 +2,10 @@
 
 namespace DecoratorValidation.BoolValidation
 {
-    public class BoolValidator : AbstractBoolValidator
+    public abstract class BoolValidator
     {
-        public override bool Validate(bool toValidate, ref String errorMessage)
-        {
-            return true;
-        }
+        public const String ErrorMessageDelimiter = @"/";
+
+        public abstract bool Validate(bool toValidate, ref String errorMessage);
     }
 }

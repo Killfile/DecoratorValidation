@@ -2,11 +2,11 @@
 
 namespace DecoratorValidation.IntValidation
 {
-    public abstract class AbstractIntValidatorDecorator : AbstractIntValidator
+    public abstract class IntValidatorDecorator : IntValidator
     {
-        protected AbstractIntValidator argument;
+        protected IntValidator argument;
 
-        public AbstractIntValidatorDecorator(AbstractIntValidator a)
+        public IntValidatorDecorator(IntValidator a)
         {
             argument = a;
         }

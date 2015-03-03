@@ -2,7 +2,7 @@
 
 namespace DecoratorValidation.IntValidation.Validators
 {
-    public class IntValidator_GreaterThan : AbstractIntValidatorDecorator
+    public class IntValidator_GreaterThan : IntValidatorDecorator
     {
         private readonly String ErrorMessage;
         private readonly int FloorValue;
@@ -15,7 +15,7 @@ namespace DecoratorValidation.IntValidation.Validators
         /// <param name="floorValue">The value to compare against</param>
         /// <param name="greaterThanOrEqualTo">Set this to true if the comparison should be inclusive of the floor value</param>
         /// <param name="ErrorMessage">The error message that will be generated if validation fails</param>
-        public IntValidator_GreaterThan(AbstractIntValidator a, int floorValue, bool greaterThanOrEqualTo, String ErrorMessage)
+        public IntValidator_GreaterThan(IntValidator a, int floorValue, bool greaterThanOrEqualTo, String ErrorMessage)
             : base(a)
         {
             this.ErrorMessage = ErrorMessage;

@@ -2,7 +2,7 @@
 
 namespace DecoratorValidation.DateValidation.Validators
 {
-    public class DateValidator_Before : AbstractDateValidatorDecorator
+    public class DateValidator_Before : DateValidatorDecorator
     {
         private readonly String _errorMessage;
         private readonly DateTime _expected;
@@ -13,7 +13,7 @@ namespace DecoratorValidation.DateValidation.Validators
         /// <param name="a">A DateTime validator - this system uses the decorator pattern</param>
         /// <param name="laterBound">The value must be less than this date to validate</param>
         /// <param name="errorMessage">The returned error message if validation fails</param>
-        public DateValidator_Before(AbstractDateValidator a, DateTime laterBound, String errorMessage)
+        public DateValidator_Before(DateValidator a, DateTime laterBound, String errorMessage)
             : base(a)
         {
             _errorMessage = errorMessage;

@@ -2,7 +2,7 @@
 
 namespace DecoratorValidation.DateValidation.Validators
 {
-    public class DateValidator_ExpectedValue : AbstractDateValidatorDecorator
+    public class DateValidator_ExpectedValue : DateValidatorDecorator
     {
         private readonly String _errorMessage;
         private readonly DateTime _expected;
@@ -13,7 +13,7 @@ namespace DecoratorValidation.DateValidation.Validators
         /// <param name="a">An Booleger validator - this system uses the constructor pattern</param>
         /// <param name="expected">The value to compare against</param>
         /// <param name="errorMessage">The returned error message if validation fails</param>
-        public DateValidator_ExpectedValue(AbstractDateValidator a, DateTime expected, String errorMessage)
+        public DateValidator_ExpectedValue(DateValidator a, DateTime expected, String errorMessage)
             : base(a)
         {
             _errorMessage = errorMessage;

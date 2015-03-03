@@ -2,11 +2,11 @@
 
 namespace DecoratorValidation.DateValidation
 {
-    public abstract class AbstractDateValidatorDecorator : AbstractDateValidator
+    public abstract class DateValidatorDecorator : DateValidator
     {
-        protected AbstractDateValidator argument;
+        protected DateValidator argument;
 
-        protected AbstractDateValidatorDecorator(AbstractDateValidator a)
+        protected DateValidatorDecorator(DateValidator a)
         {
             argument = a;
         }

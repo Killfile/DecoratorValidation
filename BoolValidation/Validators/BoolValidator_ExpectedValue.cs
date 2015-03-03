@@ -2,7 +2,7 @@
 
 namespace DecoratorValidation.BoolValidation.Validators
 {
-    public class BoolValidator_ExpectedValue : AbstractBoolValidatorDecorator
+    public class BoolValidator_ExpectedValue : BoolValidatorDecorator
     {
         private readonly String _errorMessage;
         private readonly bool _expected;
@@ -13,7 +13,7 @@ namespace DecoratorValidation.BoolValidation.Validators
         /// <param name="a">An Booleger validator - this system uses the constructor pattern</param>
         /// <param name="expected">The value to compare against</param>
         /// <param name="errorMessage">The returned error message if validation fails</param>
-        public BoolValidator_ExpectedValue(AbstractBoolValidator a, bool expected, String errorMessage)
+        public BoolValidator_ExpectedValue(BoolValidator a, bool expected, String errorMessage)
             : base(a)
         {
             _errorMessage = errorMessage;

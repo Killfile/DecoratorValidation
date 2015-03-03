@@ -2,11 +2,11 @@
 
 namespace DecoratorValidation.BoolValidation
 {
-    public abstract class AbstractBoolValidatorDecorator : AbstractBoolValidator
+    public abstract class BoolValidatorDecorator : BoolValidator
     {
-        protected AbstractBoolValidator argument;
+        protected BoolValidator argument;
 
-        protected AbstractBoolValidatorDecorator(AbstractBoolValidator a)
+        protected BoolValidatorDecorator(BoolValidator a)
         {
             argument = a;
         }

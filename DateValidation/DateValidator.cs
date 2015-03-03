@@ -2,11 +2,10 @@
 
 namespace DecoratorValidation.DateValidation
 {
-    public class DateValidator : AbstractDateValidator
+    public abstract class DateValidator
     {
-        public override bool Validate(DateTime toValidate, ref String errorMessage)
-        {
-            return true;
-        }
+        public const String ErrorMessageDelimiter = @"/";
+
+        public abstract bool Validate(DateTime toValidate, ref String errorMessage);
     }
 }
