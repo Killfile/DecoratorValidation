@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorValidation", "DecoratorValidation.csproj", "{0CB41F5F-C19E-4E39-BBC7-A5922C2B6FE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorValidationTests", "DecoratorValidationTests\DecoratorValidationTests.csproj", "{AD8B92DD-C3B9-413F-AC4E-57EC078A1445}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CB41F5F-C19E-4E39-BBC7-A5922C2B6FE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CB41F5F-C19E-4E39-BBC7-A5922C2B6FE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CB41F5F-C19E-4E39-BBC7-A5922C2B6FE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CB41F5F-C19E-4E39-BBC7-A5922C2B6FE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD8B92DD-C3B9-413F-AC4E-57EC078A1445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD8B92DD-C3B9-413F-AC4E-57EC078A1445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD8B92DD-C3B9-413F-AC4E-57EC078A1445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD8B92DD-C3B9-413F-AC4E-57EC078A1445}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
