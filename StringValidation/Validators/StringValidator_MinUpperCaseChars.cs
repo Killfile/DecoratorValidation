@@ -1,15 +1,16 @@
-﻿using System;
+﻿using DecoratorValidation.Core;
+using System;
 using System.Text.RegularExpressions;
 
 namespace DecoratorValidation.StringValidation.Validators
 {
-    public class StringValidator_MinUpperCaseChars : StringValidatorDecorator
+    public class StringValidator_MinUpperCaseChars : ValidatorDecorator<String>
     {
         private const String REG_EX = @"[A-Z]";
         private readonly int _minCount;
         private readonly String _errorMessage;
 
-        public StringValidator_MinUpperCaseChars(StringValidator a, int minCount, String errorMessage)
+        public StringValidator_MinUpperCaseChars(Validator<String> a, int minCount, String errorMessage)
             : base(a)
         {
             _minCount = minCount;

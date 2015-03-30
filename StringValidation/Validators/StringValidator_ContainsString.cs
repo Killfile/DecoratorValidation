@@ -1,13 +1,14 @@
-﻿using System;
+﻿using DecoratorValidation.Core;
+using System;
 
 namespace DecoratorValidation.StringValidation.Validators
 {
-    public class StringValidator_ContainsString : StringValidatorDecorator
+    public class StringValidator_ContainsString : ValidatorDecorator<String>
     {
         private readonly String _expectedString;
         private readonly String _errorMessage;
 
-        public StringValidator_ContainsString(StringValidator a, String expectedString, String errorMessage)
+        public StringValidator_ContainsString(Validator<String> a, String expectedString, String errorMessage)
             : base(a)
         {
             _expectedString = expectedString;

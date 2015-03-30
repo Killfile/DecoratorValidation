@@ -55,6 +55,9 @@
     <Compile Include="BoolValidation\BoolValidator.cs" />
     <Compile Include="BoolValidation\BoolValidatorBaseCase.cs" />
     <Compile Include="BoolValidation\Validators\BoolValidator_ExpectedValue.cs" />
+    <Compile Include="Core\Validator.cs" />
+    <Compile Include="Core\ValidatorBaseCase.cs" />
+    <Compile Include="Core\ValidatorDecorator.cs" />
     <Compile Include="DateValidation\DateValidatorDecorator.cs" />
     <Compile Include="DateValidation\DateValidator.cs" />
     <Compile Include="DateValidation\DateValidatorBaseCase.cs" />
@@ -67,8 +70,6 @@
     <Compile Include="IntValidation\Validators\IntValidator_GreaterThan.cs" />
     <Compile Include="IntValidation\Validators\IntValidator_LessThan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringValidation\AbstractStringVaidatorDecorator.cs" />
-    <Compile Include="StringValidation\StringValidator.cs" />
     <Compile Include="StringValidation\StringValidatorBaseCase.cs" />
     <Compile Include="StringValidation\Validators\StringValidator_StartsWith.cs" />
     <Compile Include="StringValidation\Validators\StringValidator_MinLowerCaseChars.cs" />

@@ -1,14 +1,15 @@
-﻿using System;
+﻿using DecoratorValidation.Core;
+using System;
 using System.Collections.Generic;
 
 namespace DecoratorValidation.StringValidation.Validators
 {
-    public class StringValidator_BlackList : StringValidatorDecorator
+    public class StringValidator_BlackList : ValidatorDecorator<String>
     {
         private readonly List<String> _blackList;
         private readonly String _errorMessage;
 
-        public StringValidator_BlackList(StringValidator a, List<String> blackList, String errorMessage)
+        public StringValidator_BlackList(Validator<String> a, List<String> blackList, String errorMessage)
             : base(a)
         {
             _blackList = blackList;

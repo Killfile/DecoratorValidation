@@ -1,15 +1,19 @@
-﻿using System.Xml;
+﻿using DecoratorValidation.Core;
+using System;
+using System.Xml;
 
 namespace DecoratorValidation.StringValidation.Validators
 {
-    public class StringValidator_XMLWellFormed : StringValidatorDecorator
+    public class StringValidator_XMLWellFormed : ValidatorDecorator<String>
     {
         private readonly string _errorMessage;
 
-        public StringValidator_XMLWellFormed(StringValidator a, string errorMessage) : base(a)
+        public StringValidator_XMLWellFormed(Validator<String> a, string errorMessage) : base(a)
         {
             _errorMessage = errorMessage;
         }
+
+        
 
         public override bool Validate(string toValidate, ref string errorMessage)
         {

@@ -1,13 +1,14 @@
-﻿using System;
+﻿using DecoratorValidation.Core;
+using System;
 
 namespace DecoratorValidation.StringValidation.Validators
 {
-    public class StringValidator_MinLength : StringValidatorDecorator
+    public class StringValidator_MinLength : ValidatorDecorator<String>
     {
         private readonly String _errorMessage;
         private readonly int _minLength;
 
-        public StringValidator_MinLength(StringValidator a, int minLength, String errorMessage)
+        public StringValidator_MinLength(Validator<String> a, int minLength, String errorMessage)
             : base(a)
         {
             _errorMessage = errorMessage;

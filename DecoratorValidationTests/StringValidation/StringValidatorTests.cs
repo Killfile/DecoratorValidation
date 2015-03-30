@@ -2,6 +2,8 @@
 using DecoratorValidation.StringValidation;
 using DecoratorValidation.StringValidation.Validators;
 using NUnit.Framework;
+using DecoratorValidation.Core;
+using System;
 
 namespace DecoratorValidationTests.StringValidation
 {
@@ -11,7 +13,7 @@ namespace DecoratorValidationTests.StringValidation
         [Test]
         public void ValidateTest()
         {
-            StringValidator validator = new StringValidatorBaseCase();
+            Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_BlackList(validator, new List<string>() {"Invalid"}, "Message");
             string errorMessage = null;
             validator.Validate("Invalid", ref errorMessage);

@@ -1,12 +1,13 @@
-﻿using System;
+﻿using DecoratorValidation.Core;
+using System;
 
 namespace DecoratorValidation.StringValidation.Validators
 {
-    public class StringValidator_NotEmpty : StringValidatorDecorator
+    public class StringValidator_NotEmpty : ValidatorDecorator<String>
     {
         private readonly String _errorMessage;
 
-        public StringValidator_NotEmpty(StringValidator a, String errorMessage)
+        public StringValidator_NotEmpty(Validator<String> a, String errorMessage)
             : base(a)
         {
             _errorMessage = errorMessage;

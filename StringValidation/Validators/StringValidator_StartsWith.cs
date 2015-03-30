@@ -1,14 +1,15 @@
-﻿using System;
+﻿using DecoratorValidation.Core;
+using System;
 
 namespace DecoratorValidation.StringValidation.Validators
 {
-    public class StringValidator_StartsWith : StringValidatorDecorator
+    public class StringValidator_StartsWith : ValidatorDecorator<String>
     {
         private readonly String _expectedString;
         private readonly String _errorMessage;
         private readonly bool _isCaseSensitive;
 
-        public StringValidator_StartsWith(StringValidator a, String expectedString, String errorMessage, bool isCaseSensitive = true)
+        public StringValidator_StartsWith(Validator<String> a, String expectedString, String errorMessage, bool isCaseSensitive = true)
             : base(a)
         {
             _expectedString = expectedString;

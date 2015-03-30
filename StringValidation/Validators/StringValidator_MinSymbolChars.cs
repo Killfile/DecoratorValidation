@@ -1,15 +1,16 @@
-﻿using System;
+﻿using DecoratorValidation.Core;
+using System;
 using System.Text.RegularExpressions;
 
 namespace DecoratorValidation.StringValidation.Validators
 {
-    public class StringValidator_MinSymbolChars : StringValidatorDecorator
+    public class StringValidator_MinSymbolChars : ValidatorDecorator<String>
     {
         private const String REG_EX = @"[!@#$%^&+=-]";
         private readonly int _minCount;
         private readonly String _errorMessage;
 
-        public StringValidator_MinSymbolChars(StringValidator a, int minCount, String errorMessage)
+        public StringValidator_MinSymbolChars(Validator<String> a, int minCount, String errorMessage)
             : base(a)
         {
             _minCount = minCount;

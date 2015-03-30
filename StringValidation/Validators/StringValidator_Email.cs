@@ -1,14 +1,15 @@
-﻿using System;
+﻿using DecoratorValidation.Core;
+using System;
 using System.Text.RegularExpressions;
 
 namespace DecoratorValidation.StringValidation.Validators
 {
-    public class StringValidator_Email : StringValidatorDecorator
+    public class StringValidator_Email : ValidatorDecorator<String>
     {
         private readonly String _regEx;
         private readonly String _errorMessage;
 
-        public StringValidator_Email(StringValidator a, String errorMessage)
+        public StringValidator_Email(Validator<String> a, String errorMessage)
             : base(a)
         {
             //From this site: http://www.regular-expressions.info/email.html
