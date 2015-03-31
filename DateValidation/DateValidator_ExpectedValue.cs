@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DecoratorValidation.Core;
+using System;
+using System.Text;
 
 namespace DecoratorValidation.DateValidation.Validators
 {
-    public class DateValidator_ExpectedValue : DateValidatorDecorator
+    public class DateValidator_ExpectedValue : ValidatorDecorator<DateTime>
     {
         private readonly String _errorMessage;
         private readonly DateTime _expected;
@@ -13,24 +15,22 @@ namespace DecoratorValidation.DateValidation.Validators
         /// <param name="a">An Booleger validator - this system uses the constructor pattern</param>
         /// <param name="expected">The value to compare against</param>
         /// <param name="errorMessage">The returned error message if validation fails</param>
-        public DateValidator_ExpectedValue(DateValidator a, DateTime expected, String errorMessage)
+        public DateValidator_ExpectedValue(Validator<DateTime> a, DateTime expected, String errorMessage)
             : base(a)
         {
             _errorMessage = errorMessage;
             _expected = expected;
         }
 
-        public override bool Validate(DateTime toValidate, ref String errorMessage)
+        public override bool Validate(DateTime toValidate, StringBuilder errorAccumulator)
         {
-            if (errorMessage == null)
-                errorMessage = String.Empty;
+         
 
-            bool validates = toValidate == _expected;
+            isValid =  toValidate == _expected;
 
-            if (validates == false)
-                errorMessage += (errorMessage.Length > 0 ? ErrorMessageDelimiter : "") + _errorMessage;
+            AppendErrorMessage(errorAccumulator, _errorMessage);
 
-            return validates && base.Validate(toValidate, ref errorMessage);
+            return isValid && base.Validate(toValidate, errorAccumulator);
         }
     }
 }

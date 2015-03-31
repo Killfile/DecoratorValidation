@@ -1,10 +1,12 @@
-﻿using System;
+﻿using DecoratorValidation.Core;
+using System;
+using System.Text;
 
 namespace DecoratorValidation.IntValidation.Validators
 {
-    public class IntValidator_GreaterThan : IntValidatorDecorator
+    public class IntValidator_GreaterThan : ValidatorDecorator<int>
     {
-        private readonly String ErrorMessage;
+        private readonly String _errorMessage;
         private readonly int FloorValue;
         private readonly bool GreaterThanOrEqualTo;
 
@@ -15,25 +17,23 @@ namespace DecoratorValidation.IntValidation.Validators
         /// <param name="floorValue">The value to compare against</param>
         /// <param name="greaterThanOrEqualTo">Set this to true if the comparison should be inclusive of the floor value</param>
         /// <param name="ErrorMessage">The error message that will be generated if validation fails</param>
-        public IntValidator_GreaterThan(IntValidator a, int floorValue, bool greaterThanOrEqualTo, String ErrorMessage)
+        public IntValidator_GreaterThan(Validator<int> a, int floorValue, bool greaterThanOrEqualTo, String ErrorMessage)
             : base(a)
         {
-            this.ErrorMessage = ErrorMessage;
+            _errorMessage = ErrorMessage;
             this.FloorValue = floorValue;
             this.GreaterThanOrEqualTo = greaterThanOrEqualTo;
         }
 
-        public override bool Validate(int toValidate, ref String errorMessage)
+        public override bool Validate(int toValidate, StringBuilder errorAccumulator)
         {
-            if (errorMessage == null)
-                errorMessage = String.Empty;
+            
 
-            bool validates = toValidate > FloorValue || (GreaterThanOrEqualTo == true && toValidate == FloorValue);
+            isValid =  toValidate > FloorValue || (GreaterThanOrEqualTo == true && toValidate == FloorValue);
 
-            if (validates == false)
-                errorMessage += (errorMessage.Length > 0 ? ErrorMessageDelimiter : "") + this.ErrorMessage;
+            AppendErrorMessage(errorAccumulator, _errorMessage);
 
-            return validates && base.Validate(toValidate, ref errorMessage);
+            return isValid && base.Validate(toValidate, errorAccumulator);
         }
     }
 }

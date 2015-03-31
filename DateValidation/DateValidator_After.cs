@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DecoratorValidation.Core;
+using System;
+using System.Text;
 
 namespace DecoratorValidation.DateValidation.Validators
 {
-    public class DateValidator_After : DateValidatorDecorator
+    public class DateValidator_After : ValidatorDecorator<DateTime>
     {
         private readonly String _errorMessage;
         private readonly DateTime _expected;
@@ -13,24 +15,22 @@ namespace DecoratorValidation.DateValidation.Validators
         /// <param name="a">A DateTime validator - this system uses the decorator pattern</param>
         /// <param name="earlierBound">The value must be geater than this date to validate</param>
         /// <param name="errorMessage">The returned error message if validation fails</param>
-        public DateValidator_After(DateValidator a, DateTime earlierBound, String errorMessage)
+        public DateValidator_After(Validator<DateTime> a, DateTime earlierBound, String errorMessage)
             : base(a)
         {
             _errorMessage = errorMessage;
             _expected = earlierBound;
         }
 
-        public override bool Validate(DateTime toValidate, ref String errorMessage)
+        public override bool Validate(DateTime toValidate, StringBuilder errorAccumulator)
         {
-            if (errorMessage == null)
-                errorMessage = String.Empty;
+           
 
-            bool validates = toValidate > _expected;
+            isValid =  toValidate > _expected;
 
-            if (validates == false)
-                errorMessage += (errorMessage.Length > 0 ? ErrorMessageDelimiter : "") + _errorMessage;
+            AppendErrorMessage(errorAccumulator, _errorMessage);
 
-            return validates && base.Validate(toValidate, ref errorMessage);
+            return isValid && base.Validate(toValidate, errorAccumulator);
         }
     }
 }

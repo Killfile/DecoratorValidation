@@ -1,5 +1,6 @@
 ﻿using DecoratorValidation.Core;
 using System;
+using System.Text;
 using System.Xml;
 
 namespace DecoratorValidation.StringValidation.Validators
@@ -15,9 +16,8 @@ namespace DecoratorValidation.StringValidation.Validators
 
         
 
-        public override bool Validate(string toValidate, ref string errorMessage)
+        public override bool Validate(string toValidate, StringBuilder errorAccumulator)
         {
-            bool validates;
             try
             {
                 if (string.IsNullOrEmpty(toValidate))
@@ -25,18 +25,17 @@ namespace DecoratorValidation.StringValidation.Validators
                 
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.LoadXml(toValidate);
-                validates = true;
+                isValid = true;
             }
             catch (XmlException)
             {
                 //If this is bothering you on debug, go to Debug / Exceptions... / Common Language Runtime Exceptions.
                 //Find System.Xml.XmlException, then make sure only "User-unhandled" is ticked 
-                validates = false;
+                isValid = false;
             }
 
-            if (validates == false) 
-                errorMessage += (errorMessage.Length > 0 ? ErrorMessageDelimiter : "") + _errorMessage;
-            return validates && base.Validate(toValidate, ref errorMessage);
+            AppendErrorMessage(errorAccumulator, _errorMessage);
+            return isValid && base.Validate(toValidate, errorAccumulator);
         }
     }
 }

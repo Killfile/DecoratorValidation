@@ -1,5 +1,6 @@
 ﻿using DecoratorValidation.Core;
 using System;
+using System.Text;
 
 namespace DecoratorValidation.StringValidation.Validators
 {
@@ -15,17 +16,14 @@ namespace DecoratorValidation.StringValidation.Validators
             _minLength = minLength;
         }
 
-        public override bool Validate(String toValidate, ref string errorMessage)
+        public override bool Validate(String toValidate, StringBuilder errorAccumulator)
         {
-            if (errorMessage == null)
-                errorMessage = string.Empty;
+            
+            isValid =  toValidate.Length >= _minLength;
 
-            bool validates = toValidate.Length >= _minLength;
+            AppendErrorMessage(errorAccumulator, _errorMessage);
 
-            if (validates == false)
-                errorMessage += (errorMessage.Length > 0 ? ErrorMessageDelimiter : "") + _errorMessage;
-
-            return validates && base.Validate(toValidate, ref errorMessage);
+            return isValid && base.Validate(toValidate, errorAccumulator);
         }
     }
 }

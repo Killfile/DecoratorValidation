@@ -1,5 +1,6 @@
 ﻿using DecoratorValidation.Core;
 using System;
+using System.Text;
 
 namespace DecoratorValidation.StringValidation.Validators
 {
@@ -17,15 +18,15 @@ namespace DecoratorValidation.StringValidation.Validators
             _isCaseSensitive = isCaseSensitive;
         }
 
-        public override bool Validate(String toValidate, ref string errorMessage)
+        public override bool Validate(String toValidate, StringBuilder errorAccumulator)
         {
-            if (errorMessage == null) errorMessage = string.Empty;
-
-            bool validates = _isCaseSensitive ? toValidate.StartsWith(_expectedString) : toValidate.ToLower().StartsWith(_expectedString.ToLower());
             
-            if (validates == false) errorMessage += (errorMessage.Length > 0 ? ErrorMessageDelimiter : "") + _errorMessage;
 
-            return validates && base.Validate(toValidate, ref errorMessage);
+            isValid =  _isCaseSensitive ? toValidate.StartsWith(_expectedString) : toValidate.ToLower().StartsWith(_expectedString.ToLower());
+
+            AppendErrorMessage(errorAccumulator, _errorMessage);
+
+            return isValid && base.Validate(toValidate, errorAccumulator);
         }
     }
 }

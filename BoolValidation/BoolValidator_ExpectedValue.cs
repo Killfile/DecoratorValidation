@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DecoratorValidation.Core;
+using System;
+using System.Text;
 
 namespace DecoratorValidation.BoolValidation.Validators
 {
-    public class BoolValidator_ExpectedValue : BoolValidatorDecorator
+    public class BoolValidator_ExpectedValue : ValidatorDecorator<bool>
     {
         private readonly String _errorMessage;
         private readonly bool _expected;
@@ -13,24 +15,20 @@ namespace DecoratorValidation.BoolValidation.Validators
         /// <param name="a">An Booleger validator - this system uses the constructor pattern</param>
         /// <param name="expected">The value to compare against</param>
         /// <param name="errorMessage">The returned error message if validation fails</param>
-        public BoolValidator_ExpectedValue(BoolValidator a, bool expected, String errorMessage)
+        public BoolValidator_ExpectedValue(Validator<bool> a, bool expected, String errorMessage)
             : base(a)
         {
             _errorMessage = errorMessage;
             _expected = expected;
         }
 
-        public override bool Validate(bool toValidate, ref String errorMessage)
+        public override bool Validate(bool toValidate, StringBuilder errorAccumulator)
         {
-            if (errorMessage == null)
-                errorMessage = String.Empty;
+         
+            isValid =  toValidate == _expected;
+            AppendErrorMessage(errorAccumulator, _errorMessage);
 
-            bool validates = toValidate == _expected;
-
-            if (validates == false)
-                errorMessage += (errorMessage.Length > 0 ? ErrorMessageDelimiter : "") + _errorMessage;
-
-            return validates && base.Validate(toValidate, ref errorMessage);
+            return isValid && base.Validate(toValidate, errorAccumulator);
         }
     }
 }

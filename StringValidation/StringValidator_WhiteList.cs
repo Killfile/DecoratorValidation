@@ -1,6 +1,7 @@
 ﻿using DecoratorValidation.Core;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace DecoratorValidation.StringValidation.Validators
 {
@@ -16,15 +17,14 @@ namespace DecoratorValidation.StringValidation.Validators
             _errorMessage = errorMessage;
         }
 
-        public override bool Validate(String toValidate, ref string errorMessage)
+        public override bool Validate(String toValidate, StringBuilder errorAccumulator)
         {
-            if (errorMessage == null) errorMessage = string.Empty;
+           
 
-            bool validates = _whiteList.Contains(toValidate);
+            isValid =  _whiteList.Contains(toValidate);
+            AppendErrorMessage(errorAccumulator, _errorMessage);
 
-            if (validates == false) errorMessage += (errorMessage.Length > 0 ? ErrorMessageDelimiter : "") + _errorMessage;
-
-            return validates && base.Validate(toValidate, ref errorMessage);
+            return isValid && base.Validate(toValidate, errorAccumulator);
         }
     }
 }

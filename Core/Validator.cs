@@ -10,6 +10,8 @@ namespace DecoratorValidation.Core
     {
         public const String ErrorMessageDelimiter = @"/";
 
-        public abstract bool Validate(T toValidate, ref string errorMessage);
+        public abstract bool Validate(T toValidate, StringBuilder errorMessage);
+
+        
     }
 }
