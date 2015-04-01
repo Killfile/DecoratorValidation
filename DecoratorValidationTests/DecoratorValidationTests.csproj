@@ -59,6 +59,8 @@
     <Compile Include="DateValidation\DateValidator_ExpectedValueTests.cs" />
     <Compile Include="IntValidation\IntValidator_GreaterThanTests.cs" />
     <Compile Include="IntValidation\IntValidator_LessThanTests.cs" />
+    <Compile Include="LamdaValidation\LamdaValidationTests.cs" />
+    <Compile Include="LamdaValidation\LamdaValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringValidation\StringValidatorTests.cs" />
     <Compile Include="StringValidation\StringValidator_BlackListTests.cs" />

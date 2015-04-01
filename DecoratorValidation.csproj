@@ -61,6 +61,7 @@
     <Compile Include="DateValidation\DateValidator_ExpectedValue.cs" />
     <Compile Include="IntValidation\IntValidator_GreaterThan.cs" />
     <Compile Include="IntValidation\IntValidator_LessThan.cs" />
+    <Compile Include="LamdaValidation\LamdaValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringValidation\StringValidator_StartsWith.cs" />
     <Compile Include="StringValidation\StringValidator_MinLowerCaseChars.cs" />
