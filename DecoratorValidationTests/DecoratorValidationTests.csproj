@@ -56,6 +56,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringValidation\StringValidatorTests.cs" />
     <Compile Include="StringValidation\StringValidator_BlackListTests.cs" />
+    <Compile Include="StringValidation\StringValidator_ContainsStringTests.cs" />
+    <Compile Include="StringValidation\StringValidator_EmailTests.cs" />
+    <Compile Include="StringValidation\StringValidator_ExpectedStringTests.cs" />
+    <Compile Include="StringValidation\StringValidator_MinLengthTests.cs" />
+    <Compile Include="StringValidation\StringValidator_MinLowerCaseCharsTests.cs" />
+    <Compile Include="StringValidation\StringValidator_MinNumericCharsTests.cs" />
+    <Compile Include="StringValidation\StringValidator_MinSymbolCharsTests.cs" />
+    <Compile Include="StringValidation\StringValidator_MinUpperCaseCharsTests.cs" />
+    <Compile Include="StringValidation\StringValidator_NotEmptyTests.cs" />
+    <Compile Include="StringValidation\StringValidator_RegExTests.cs" />
+    <Compile Include="StringValidation\StringValidator_StartsWithTests.cs" />
+    <Compile Include="StringValidation\StringValidator_WhiteListTests.cs" />
+    <Compile Include="StringValidation\StringValidator_XMLWellFormedTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DecoratorValidation.csproj">
