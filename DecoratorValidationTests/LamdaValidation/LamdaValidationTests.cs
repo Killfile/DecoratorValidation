@@ -24,7 +24,7 @@ namespace DecoratorValidationTests.LamdaValidation
             Validator<Guid> validator = new ValidatorBaseCase<Guid>();
             Guid expectedValue = Guid.NewGuid();
             validator = new LamdaValidator<Guid>(validator, g => g == expectedValue, errorMessage);
-            bool actual = validator.Validate(Guid.NewGuid(), errorAccumulator);
+            bool actual = validator.Validate(Guid.NewGuid());
             Assert.That(actual, Is.False);
         }
 
@@ -35,7 +35,7 @@ namespace DecoratorValidationTests.LamdaValidation
             Validator<Guid> validator = new ValidatorBaseCase<Guid>();
             Guid expectedValue = Guid.NewGuid();
             validator = new LamdaValidator<Guid>(validator, g => g == expectedValue, errorMessage);
-            bool actual = validator.Validate(expectedValue, errorAccumulator);
+            bool actual = validator.Validate(expectedValue);
             Assert.That(actual, Is.True);
         }
 
@@ -46,8 +46,8 @@ namespace DecoratorValidationTests.LamdaValidation
             Validator<Guid> validator = new ValidatorBaseCase<Guid>();
             Guid expectedValue = Guid.NewGuid();
             validator = new LamdaValidator<Guid>(validator, g => g == expectedValue, errorMessage);
-            bool actual = validator.Validate(Guid.NewGuid(), errorAccumulator);
-            Assert.That(errorAccumulator.ToString(), Is.EqualTo(errorMessage));
+            bool actual = validator.Validate(Guid.NewGuid());
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }

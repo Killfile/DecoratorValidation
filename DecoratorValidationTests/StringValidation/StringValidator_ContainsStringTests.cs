@@ -24,7 +24,7 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
         {
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_ContainsString(validator, "Contains", "Contains Not Found");
-            bool result = validator.Validate("[Contains]", errorAccumulator);
+            bool result = validator.Validate("[Contains]");
             Assert.That(result, Is.True);
         }
 
@@ -33,18 +33,18 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
         {
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_ContainsString(validator, "Contains", "Contains Not Found");
-            bool result = validator.Validate("[NoDice]", errorAccumulator);
+            bool result = validator.Validate("[NoDice]");
             Assert.That(result, Is.False);
         }
 
         [Test()]
         public void WhenContainsStringDoesNotValidate_GenerateError()
         {
-            string error = "Contains Not Found";
+            string errorMessage = "Contains Not Found";
             Validator<String> validator = new ValidatorBaseCase<String>();
-            validator = new StringValidator_ContainsString(validator, "Contains", error);
-            bool result = validator.Validate("[NoDice]", errorAccumulator);
-            Assert.That(errorAccumulator.ToString(), Is.EqualTo(error));
+            validator = new StringValidator_ContainsString(validator, "Contains", errorMessage);
+            bool result = validator.Validate("[NoDice]");
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }

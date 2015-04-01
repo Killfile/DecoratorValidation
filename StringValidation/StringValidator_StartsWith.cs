@@ -18,15 +18,15 @@ namespace DecoratorValidation.StringValidation.Validators
             _isCaseSensitive = isCaseSensitive;
         }
 
-        public override bool Validate(String toValidate, StringBuilder errorAccumulator)
+        public override bool Validate(String toValidate)
         {
             
 
             isValid =  _isCaseSensitive ? toValidate.StartsWith(_expectedString) : toValidate.ToLower().StartsWith(_expectedString.ToLower());
 
-            AppendErrorMessage(errorAccumulator, _errorMessage);
+            AppendErrorMessage(_errorMessage);
 
-            return isValid && base.Validate(toValidate, errorAccumulator);
+            return isValid && base.Validate(toValidate);
         }
     }
 }

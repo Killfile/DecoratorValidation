@@ -28,20 +28,20 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
             string error = "MinSymbolChars not met";
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_MinSymbolChars(validator, MinSymbolChars, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
+            bool result = validator.Validate(candidate);
             Assert.That(result, Is.EqualTo(expectedResult));
         }
         
         [Test()]
         public void WhenMinSymbolCharsDoesNotValidate_GenerateError()
         {
-            string error = "MinSymbolChars not found";
+            string errorMessage = "MinSymbolChars not found";
             string candidate = "!@34567";
             int MinSymbolChars = 9;
             Validator<String> validator = new ValidatorBaseCase<String>();
-            validator = new StringValidator_MinSymbolChars(validator, MinSymbolChars, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
-            Assert.That(errorAccumulator.ToString(), Is.EqualTo(error));
+            validator = new StringValidator_MinSymbolChars(validator, MinSymbolChars, errorMessage);
+            bool result = validator.Validate(candidate);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }

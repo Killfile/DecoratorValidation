@@ -29,20 +29,20 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
             string error = "RegEx not met";
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_RegEx(validator, RegEx, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
+            bool result = validator.Validate(candidate);
             Assert.That(result, Is.EqualTo(expectedResult));
         }
 
         [Test()]
         public void WhenRegExDoesNotValidate_GenerateError()
         {
-            string error = "RegEx not found";
+            string errorMessage = "RegEx not found";
             string candidate = "abcabc";
             string RegEx = @"$[AB]{3}";
             Validator<String> validator = new ValidatorBaseCase<String>();
-            validator = new StringValidator_RegEx(validator, RegEx, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
-            Assert.That(errorAccumulator.ToString(), Is.EqualTo(error));
+            validator = new StringValidator_RegEx(validator, RegEx, errorMessage);
+            bool result = validator.Validate(candidate);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }

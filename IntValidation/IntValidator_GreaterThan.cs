@@ -25,15 +25,15 @@ namespace DecoratorValidation.IntValidation.Validators
             this.GreaterThanOrEqualTo = greaterThanOrEqualTo;
         }
 
-        public override bool Validate(int toValidate, StringBuilder errorAccumulator)
+        public override bool Validate(int toValidate)
         {
             
 
             isValid =  toValidate > FloorValue || (GreaterThanOrEqualTo == true && toValidate == FloorValue);
 
-            AppendErrorMessage(errorAccumulator, _errorMessage);
+            AppendErrorMessage(_errorMessage);
 
-            return isValid && base.Validate(toValidate, errorAccumulator);
+            return isValid && base.Validate(toValidate);
         }
     }
 }

@@ -29,20 +29,20 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
             string error = "StartsWith not met";
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_StartsWith(validator, StartsWith, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
+            bool result = validator.Validate(candidate);
             Assert.That(result, Is.EqualTo(expectedResult));
         }
 
         [Test()]
         public void WhenStartsWithDoesNotValidate_GenerateError()
         {
-            string error = "StartsWith not found";
+            string errorMessage = "StartsWith not found";
             string candidate = "abcabc";
             string StartsWith = "D";
             Validator<String> validator = new ValidatorBaseCase<String>();
-            validator = new StringValidator_StartsWith(validator, StartsWith, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
-            Assert.That(errorAccumulator.ToString(), Is.EqualTo(error));
+            validator = new StringValidator_StartsWith(validator, StartsWith, errorMessage);
+            bool result = validator.Validate(candidate);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }

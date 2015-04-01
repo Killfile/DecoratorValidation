@@ -25,15 +25,15 @@ namespace DecoratorValidation.IntValidation.Validators
             this.LessThanOrEqualTo = lessThanOrEqualTo;
         }
 
-        public override bool Validate(int toValidate, StringBuilder errorAccumulator)
+        public override bool Validate(int toValidate)
         {
             
 
             isValid =  toValidate < CeilingValue || (LessThanOrEqualTo && toValidate == CeilingValue);
 
-            AppendErrorMessage(errorAccumulator, _errorMessage);
+            AppendErrorMessage(_errorMessage);
 
-            return isValid && base.Validate(toValidate, errorAccumulator);
+            return isValid && base.Validate(toValidate);
         }
     }
 }

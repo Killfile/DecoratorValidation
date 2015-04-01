@@ -11,14 +11,17 @@ namespace DecoratorValidationTests.StringValidation
     [TestFixture]
     public class StringValidatorTests
     {
+        
+
         [Test]
         public void ValidateTest()
         {
+            string errorMessage = "Message";
             Validator<String> validator = new ValidatorBaseCase<String>();
-            validator = new StringValidator_BlackList(validator, new List<string>() {"Invalid"}, "Message");
-            StringBuilder errorMessage = new StringBuilder();
-            validator.Validate("Invalid", errorMessage);
-            Assert.AreEqual("Message", errorMessage.ToString());
+            validator = new StringValidator_BlackList(validator, new List<string>() {"Invalid"}, errorMessage);
+            validator.Validate("Invalid");
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
+            
         }
     }
 }

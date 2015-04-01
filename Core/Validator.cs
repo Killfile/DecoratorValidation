@@ -9,9 +9,15 @@ namespace DecoratorValidation.Core
     public abstract class Validator<T>
     {
         public const String ErrorMessageDelimiter = @"/";
+        internal StringBuilder errorAccumulator;
 
-        public abstract bool Validate(T toValidate, StringBuilder errorMessage);
 
-        
+        public abstract bool Validate(T toValidate);
+
+
+
+        public string ErrorMessage { get {
+            return errorAccumulator.ToString();
+        } }
     }
 }

@@ -29,7 +29,7 @@ namespace DecoratorValidation.BoolValidation.Validators.Tests
             string errorMessage = "BoolValidator_ExpectedValue Failed";
             Validator<bool> validator = new ValidatorBaseCase<bool>();
             validator = new BoolValidator_ExpectedValue(validator, expectedValue, errorMessage);
-            bool actual = validator.Validate(toValidate, errorAccumulator);
+            bool actual = validator.Validate(toValidate);
             Assert.That(actual, Is.EqualTo(expectedResult));
         }
 
@@ -40,8 +40,8 @@ namespace DecoratorValidation.BoolValidation.Validators.Tests
             string errorMessage = "BoolValidator_ExpectedValue Failed";
             Validator<bool> validator = new ValidatorBaseCase<bool>();
             validator = new BoolValidator_ExpectedValue(validator, expectedValue, errorMessage);
-            bool actual = validator.Validate(toValidate, errorAccumulator);
-            Assert.That(errorAccumulator.ToString(), Is.EqualTo(errorMessage));
+            bool actual = validator.Validate(toValidate);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }

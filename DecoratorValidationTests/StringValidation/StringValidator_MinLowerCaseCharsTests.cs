@@ -27,7 +27,7 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
             int MinLowerCaseChars = 3;
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_MinLowerCaseChars(validator, MinLowerCaseChars, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
+            bool result = validator.Validate(candidate);
             Assert.That(result, Is.True);
         }
 
@@ -39,20 +39,20 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
             int MinLowerCaseChars = 3;
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_MinLowerCaseChars(validator, MinLowerCaseChars, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
+            bool result = validator.Validate(candidate);
             Assert.That(result, Is.False);
         }
 
         [Test()]
         public void WhenMinLowerCaseCharsDoesNotValidate_GenerateError()
         {
-            string error = "MinLowerCaseChars not found";
+            string errorMessage = "MinLowerCaseChars not found";
             string candidate = "abCABC";
             int MinLowerCaseChars = 3;
             Validator<String> validator = new ValidatorBaseCase<String>();
-            validator = new StringValidator_MinLowerCaseChars(validator, MinLowerCaseChars, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
-            Assert.That(errorAccumulator.ToString(), Is.EqualTo(error));
+            validator = new StringValidator_MinLowerCaseChars(validator, MinLowerCaseChars, errorMessage);
+            bool result = validator.Validate(candidate);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }

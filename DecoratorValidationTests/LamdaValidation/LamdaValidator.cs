@@ -16,11 +16,11 @@ namespace DecoratorValidationTests.LinqValidation
             _predicate = predicate;
         }
 
-        public override bool Validate(T toValidate, StringBuilder errorAccumulator)
+        public override bool Validate(T toValidate)
         {
             isValid = _predicate(toValidate);
-            AppendErrorMessage(errorAccumulator, _errorMessage);
-            return isValid && base.Validate(toValidate, errorAccumulator);
+            AppendErrorMessage(_errorMessage);
+            return isValid && base.Validate(toValidate);
         }
     }
 }

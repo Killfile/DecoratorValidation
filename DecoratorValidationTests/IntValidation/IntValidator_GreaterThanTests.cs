@@ -31,7 +31,7 @@ namespace DecoratorValidation.IntValidation.Validators.Tests
             string errorMessage = "IntValidator_GreaterThan Failed";
             Validator<int> validator = new ValidatorBaseCase<int>();
             validator = new IntValidator_GreaterThan(validator, bound, orEqualTo, errorMessage);
-            bool actual = validator.Validate(toValidate, errorAccumulator);
+            bool actual = validator.Validate(toValidate);
             Assert.That(actual, Is.EqualTo(expectedResult));
         }
 
@@ -42,8 +42,8 @@ namespace DecoratorValidation.IntValidation.Validators.Tests
             string errorMessage = "IntValidator_GreaterThan Failed";
             Validator<int> validator = new ValidatorBaseCase<int>();
             validator = new IntValidator_GreaterThan(validator, bound, orEqualTo, errorMessage);
-            bool actual = validator.Validate(toValidate, errorAccumulator);
-            Assert.That(errorAccumulator.ToString(), Is.EqualTo(errorMessage));
+            bool actual = validator.Validate(toValidate);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }

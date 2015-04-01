@@ -27,7 +27,7 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
             int MinLength = 8;
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_MinLength(validator, MinLength, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
+            bool result = validator.Validate(candidate);
             Assert.That(result, Is.True);
         }
 
@@ -39,20 +39,20 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
             int MinLength = 8;
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_MinLength(validator, MinLength, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
+            bool result = validator.Validate(candidate);
             Assert.That(result, Is.False);
         }
 
         [Test()]
         public void WhenMinLengthDoesNotValidate_GenerateError()
         {
-            string error = "MinLength not found";
+            string errorMessage = "MinLength not found";
             string candidate = "1234567";
             int MinLength = 9;
             Validator<String> validator = new ValidatorBaseCase<String>();
-            validator = new StringValidator_MinLength(validator, MinLength, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
-            Assert.That(errorAccumulator.ToString(), Is.EqualTo(error));
+            validator = new StringValidator_MinLength(validator, MinLength, errorMessage);
+            bool result = validator.Validate(candidate);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }

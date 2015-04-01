@@ -30,7 +30,7 @@ namespace DecoratorValidation.DateValidation.Validators.Tests
             string errorMessage = "DateValidator_After Failed";
             Validator<DateTime> validator = new ValidatorBaseCase<DateTime>();
             validator = new DateValidator_After(validator, Bound, errorMessage);
-            bool actual = validator.Validate(ToValidate, errorAccumulator);
+            bool actual = validator.Validate(ToValidate);
             Assert.That(actual, Is.EqualTo(expectedResult));
         }
 
@@ -43,8 +43,8 @@ namespace DecoratorValidation.DateValidation.Validators.Tests
             string errorMessage = "DateValidator_After Failed";
             Validator<DateTime> validator = new ValidatorBaseCase<DateTime>();
             validator = new DateValidator_After(validator, Bound, errorMessage);
-            bool actual = validator.Validate(ToValidate, errorAccumulator);
-            Assert.That(errorAccumulator.ToString(), Is.EqualTo(errorMessage));
+            bool actual = validator.Validate(ToValidate);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }

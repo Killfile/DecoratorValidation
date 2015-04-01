@@ -29,20 +29,20 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
             string error = "Empty!";
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_NotEmpty(validator, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
+            bool result = validator.Validate(candidate);
             Assert.That(result, Is.EqualTo(expectedResult));
         }
 
         [Test()]
         public void WhenNotEmptyDoesNotValidate_GenerateError()
         {
-            string error = "Empty!";
+            string errorMessage = "Empty!";
             string candidate = string.Empty;
             int NotEmpty = 9;
             Validator<String> validator = new ValidatorBaseCase<String>();
-            validator = new StringValidator_NotEmpty(validator, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
-            Assert.That(errorAccumulator.ToString(), Is.EqualTo(error));
+            validator = new StringValidator_NotEmpty(validator, errorMessage);
+            bool result = validator.Validate(candidate);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }

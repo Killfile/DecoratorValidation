@@ -27,7 +27,7 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
             int MinNumericChars = 8;
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_MinNumericChars(validator, MinNumericChars, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
+            bool result = validator.Validate(candidate);
             Assert.That(result, Is.True);
         }
 
@@ -39,20 +39,20 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
             int MinNumericChars = 8;
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_MinNumericChars(validator, MinNumericChars, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
+            bool result = validator.Validate(candidate);
             Assert.That(result, Is.False);
         }
 
         [Test()]
         public void WhenMinNumericCharsDoesNotValidate_GenerateError()
         {
-            string error = "MinNumericChars not found";
+            string errorMessage = "MinNumericChars not found";
             string candidate = "1234567a";
             int MinNumericChars = 9;
             Validator<String> validator = new ValidatorBaseCase<String>();
-            validator = new StringValidator_MinNumericChars(validator, MinNumericChars, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
-            Assert.That(errorAccumulator.ToString(), Is.EqualTo(error));
+            validator = new StringValidator_MinNumericChars(validator, MinNumericChars, errorMessage);
+            bool result = validator.Validate(candidate);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }

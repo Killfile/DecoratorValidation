@@ -10,27 +10,29 @@ namespace DecoratorValidation.Core
     {
         protected Validator<T> argument;
         protected bool isValid;
-        
-        protected ValidatorDecorator(Validator<T> a) {
+
+        protected ValidatorDecorator(Validator<T> a)
+        {
             argument = a;
+            errorAccumulator = a.errorAccumulator;
         }
 
-        public override bool Validate(T toValidate, StringBuilder errorMessage)
+        public override bool Validate(T toValidate)
         {
             if (argument != null)
-                return argument.Validate(toValidate, errorMessage);
+                return argument.Validate(toValidate);
             return true;
         }
 
-        protected void AppendErrorMessage(StringBuilder accumulator, string errorText)
+        protected void AppendErrorMessage(string errorText)
         {
-            if (accumulator == null)
+            if (errorAccumulator == null)
                 throw new AccumulatorNotInitializedException();
             
             if (isValid) return;
-            if (accumulator.Length > 0)
-                accumulator.Append(ErrorMessageDelimiter);
-            accumulator.Append(errorText);
+            if (errorAccumulator.Length > 0)
+                errorAccumulator.Append(ErrorMessageDelimiter);
+            errorAccumulator.Append(errorText);
         }
 
 

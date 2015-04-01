@@ -22,15 +22,15 @@ namespace DecoratorValidation.DateValidation.Validators
             _expected = earlierBound;
         }
 
-        public override bool Validate(DateTime toValidate, StringBuilder errorAccumulator)
+        public override bool Validate(DateTime toValidate)
         {
            
 
             isValid =  toValidate > _expected;
 
-            AppendErrorMessage(errorAccumulator, _errorMessage);
+            AppendErrorMessage(_errorMessage);
 
-            return isValid && base.Validate(toValidate, errorAccumulator);
+            return isValid && base.Validate(toValidate);
         }
     }
 }

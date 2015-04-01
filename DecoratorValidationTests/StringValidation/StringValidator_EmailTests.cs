@@ -26,7 +26,7 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
             string candidate = "foo@bar.com";
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_Email(validator, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
+            bool result = validator.Validate(candidate);
             Assert.That(result, Is.True);
         }
 
@@ -37,19 +37,19 @@ namespace DecoratorValidation.StringValidation.Validators.Tests
             string candidate = "foobar.com";
             Validator<String> validator = new ValidatorBaseCase<String>();
             validator = new StringValidator_Email(validator, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
+            bool result = validator.Validate(candidate);
             Assert.That(result, Is.False);
         }
 
         [Test()]
         public void WhenEmailDoesNotValidate_GenerateError()
         {
-            string error = "Email not found";
+            string errorMessage = "Email not found";
             string candidate = "foobar.com";
             Validator<String> validator = new ValidatorBaseCase<String>();
-            validator = new StringValidator_Email(validator, error);
-            bool result = validator.Validate(candidate, errorAccumulator);
-            Assert.That(errorAccumulator.ToString(), Is.EqualTo(error));
+            validator = new StringValidator_Email(validator, errorMessage);
+            bool result = validator.Validate(candidate);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }

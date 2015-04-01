@@ -22,13 +22,13 @@ namespace DecoratorValidation.BoolValidation.Validators
             _expected = expected;
         }
 
-        public override bool Validate(bool toValidate, StringBuilder errorAccumulator)
+        public override bool Validate(bool toValidate)
         {
          
             isValid =  toValidate == _expected;
-            AppendErrorMessage(errorAccumulator, _errorMessage);
+            AppendErrorMessage(_errorMessage);
 
-            return isValid && base.Validate(toValidate, errorAccumulator);
+            return isValid && base.Validate(toValidate);
         }
     }
 }

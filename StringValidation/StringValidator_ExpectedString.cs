@@ -16,13 +16,13 @@ namespace DecoratorValidation.StringValidation.Validators
             _errorMessage = errorMessage;
         }
 
-        public override bool Validate(String toValidate, StringBuilder errorAccumulator)
+        public override bool Validate(String toValidate)
         {
             isValid = toValidate == _expectedString;
 
-            AppendErrorMessage(errorAccumulator, _errorMessage); 
+            AppendErrorMessage(_errorMessage);
 
-            return isValid && base.Validate(toValidate, errorAccumulator);
+            return isValid && base.Validate(toValidate);
         }
     }
 }

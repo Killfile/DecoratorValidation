@@ -14,9 +14,9 @@ namespace DecoratorValidation.StringValidation.Validators
             _errorMessage = errorMessage;
         }
 
-        
 
-        public override bool Validate(string toValidate, StringBuilder errorAccumulator)
+
+        public override bool Validate(string toValidate)
         {
             try
             {
@@ -34,8 +34,8 @@ namespace DecoratorValidation.StringValidation.Validators
                 isValid = false;
             }
 
-            AppendErrorMessage(errorAccumulator, _errorMessage);
-            return isValid && base.Validate(toValidate, errorAccumulator);
+            AppendErrorMessage(_errorMessage);
+            return isValid && base.Validate(toValidate);
         }
     }
 }
