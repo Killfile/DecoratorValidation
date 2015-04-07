@@ -7,22 +7,21 @@ using System.Threading.Tasks;
 
 namespace DecoratorValidation.LogicalValidation
 {
-    public class LogicalValidator_Or<T> : ValidatorDecorator<T> 
+    public class LogicalValidator_Any<T> : ValidatorDecorator<T> 
     {
         private string _errorMessage;
-        private Validator<T> _left;
-        private Validator<T> _right;
+        private List<Validator<T>> _list;
+        
 
-        public LogicalValidator_Or(Validator<T> a, Validator<T> left, Validator<T> right, String errorMessage) : base(a)
+        public LogicalValidator_Any(Validator<T> a, List<Validator<T>> list, String errorMessage) : base(a)
         {
             _errorMessage = errorMessage;
-            _left = left;
-            _right = right;
+            _list = list;
         }
 
         public override bool Validate(T toValidate)
         {
-            isValid = _left.Validate(toValidate) || _right.Validate(toValidate);
+            isValid = _list.Any(i => i.Validate(toValidate));
             AppendErrorMessage(_errorMessage);
             return isValid && base.Validate(toValidate);
         }

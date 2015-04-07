@@ -1,16 +1,17 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using DecoratorValidation.Core;
 using DecoratorValidation.BoolValidation.Validators;
 using DecoratorValidation.LogicalValidation;
 using Moq;
+using NUnit.Framework;
 
 namespace DecoratorValidationTests.LogicalValidatation
 {
-    [TestClass]
+    [TestFixture]
     public class LogicalValidator_OrTests
     {
-        [TestMethod]
+        [Test]
         public void CanConstructOrValidator()
         {
             Validator<bool> left = new ValidatorBaseCase<bool>();
@@ -23,7 +24,7 @@ namespace DecoratorValidationTests.LogicalValidatation
             logicalOr = new LogicalValidator_Or<bool>(logicalOr, left, right, "Neither passed");
         }
 
-        [TestMethod]
+        [Test]
         public void MockedValidatorCanBeMadeToAlwaysFail()
         {
             Validator<bool> validator = GenerateFailingValidator();
@@ -47,7 +48,7 @@ namespace DecoratorValidationTests.LogicalValidatation
             return validator;
         }
 
-        [TestMethod]
+        [Test]
         public void OrValidatorReturnsTrueIfOnlyLeftValidates()
         {
             Validator<bool> left = GeneratePassingValidator();
@@ -59,7 +60,7 @@ namespace DecoratorValidationTests.LogicalValidatation
             Assert.IsTrue(logicalOr.Validate(true));
         }
 
-        [TestMethod]
+        [Test]
         public void OrValidatorReturnsTrueIfOnlyRightValidates()
         {
             Validator<bool> right = GeneratePassingValidator();
@@ -71,7 +72,7 @@ namespace DecoratorValidationTests.LogicalValidatation
             Assert.IsTrue(logicalOr.Validate(true));
         }
 
-        [TestMethod]
+        [Test]
         public void OrValidatorReturnsTrueIfBothValidate()
         {
             Validator<bool> left = GeneratePassingValidator();
@@ -83,7 +84,7 @@ namespace DecoratorValidationTests.LogicalValidatation
             Assert.IsTrue(logicalOr.Validate(true));
         }
 
-        [TestMethod]
+        [Test]
         public void OrValidatorReturnsFalseIfNeitherValidates()
         {
             Validator<bool> left = GenerateFailingValidator();
@@ -93,6 +94,20 @@ namespace DecoratorValidationTests.LogicalValidatation
             Validator<bool> logicalOr = new ValidatorBaseCase<bool>();
             logicalOr = new LogicalValidator_Or<bool>(logicalOr, left, right, "Neither passed");
             Assert.IsFalse(logicalOr.Validate(true));
+        }
+
+        [Test]
+        public void OrVaildatorReturnsErrorMessageWhenValidationFails()
+        {
+            string errorMessage = "Neither Passed";
+            Validator<bool> left = GenerateFailingValidator();
+
+            Validator<bool> right = GenerateFailingValidator();
+
+            Validator<bool> logicalOr = new ValidatorBaseCase<bool>();
+            logicalOr = new LogicalValidator_Or<bool>(logicalOr, left, right, errorMessage);
+            logicalOr.Validate(true);
+            Assert.That(logicalOr.ErrorMessage, Is.EqualTo(errorMessage));
         }
     }
 }
