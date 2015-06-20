@@ -1,13 +1,13 @@
 ﻿using DecoratorValidation.Core;
-using DecoratorValidation.LamdaValidation.Validators;
+using DecoratorValidation.LambdaValidation.Validators;
 using NUnit.Framework;
 using System;
 using System.Text;
 
-namespace DecoratorValidationTests.LamdaValidation
+namespace DecoratorValidationTests.LambdaValidation
 {
     [TestFixture]
-    public class LamdaValidationTests
+    public class LambdaValidationTests
     {
         private StringBuilder errorAccumulator;
 
@@ -18,34 +18,34 @@ namespace DecoratorValidationTests.LamdaValidation
         }
 
         [Test]
-        public void LamdaValidator_Validates_Fail()
+        public void LambdaValidator_Validates_Fail()
         {
-            string errorMessage = "Lamda not met";
+            string errorMessage = "Lambda not met";
             Validator<Guid> validator = new ValidatorBaseCase<Guid>();
             Guid expectedValue = Guid.NewGuid();
-            validator = new LamdaValidator<Guid>(validator, g => g == expectedValue, errorMessage);
+            validator = new LambdaValidator<Guid>(validator, g => g == expectedValue, errorMessage);
             bool actual = validator.Validate(Guid.NewGuid());
             Assert.That(actual, Is.False);
         }
 
         [Test]
-        public void LamdaValidator_Validates_Pass()
+        public void LambdaValidator_Validates_Pass()
         {
-            string errorMessage = "Lamda not met";
+            string errorMessage = "Lambda not met";
             Validator<Guid> validator = new ValidatorBaseCase<Guid>();
             Guid expectedValue = Guid.NewGuid();
-            validator = new LamdaValidator<Guid>(validator, g => g == expectedValue, errorMessage);
+            validator = new LambdaValidator<Guid>(validator, g => g == expectedValue, errorMessage);
             bool actual = validator.Validate(expectedValue);
             Assert.That(actual, Is.True);
         }
 
         [Test]
-        public void LamdaValidator_Validates_FailProducesError()
+        public void LambdaValidator_Validates_FailProducesError()
         {
-            string errorMessage = "Lamda not met";
+            string errorMessage = "Lambda not met";
             Validator<Guid> validator = new ValidatorBaseCase<Guid>();
             Guid expectedValue = Guid.NewGuid();
-            validator = new LamdaValidator<Guid>(validator, g => g == expectedValue, errorMessage);
+            validator = new LambdaValidator<Guid>(validator, g => g == expectedValue, errorMessage);
             bool actual = validator.Validate(Guid.NewGuid());
             Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }

@@ -65,7 +65,7 @@
     <Compile Include="FloatValidation\FloatValidator_LessThanTests.cs" />
     <Compile Include="IntValidation\IntValidator_GreaterThanTests.cs" />
     <Compile Include="IntValidation\IntValidator_LessThanTests.cs" />
-    <Compile Include="LamdaValidation\LamdaValidationTests.cs" />
+    <Compile Include="LambdaValidation\LamdaValidationTests.cs" />
     <Compile Include="LogicalValidatation\LogicalValidator_AnyTests.cs" />
     <Compile Include="LogicalValidatation\LogicalValidator_OrTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

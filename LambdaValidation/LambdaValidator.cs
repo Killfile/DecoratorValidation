@@ -4,15 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DecoratorValidation.LamdaValidation.Validators
+namespace DecoratorValidation.LambdaValidation.Validators
 {
-    [Obsolete("Use the (correctly spelled) LambdaValidator instead.")]
-    public class LamdaValidator<T> : ValidatorDecorator<T>
+    public class LambdaValidator<T> : ValidatorDecorator<T>
     {
         private Func<T, bool> _predicate;
         private string _errorMessage;
 
-        public LamdaValidator(Validator<T> a, Func<T,bool> predicate, String ErrorMessage) : base(a) {
+        public LambdaValidator(Validator<T> a, Func<T,bool> predicate, String ErrorMessage) : base(a) {
             _errorMessage = ErrorMessage;
             _predicate = predicate;
         }
