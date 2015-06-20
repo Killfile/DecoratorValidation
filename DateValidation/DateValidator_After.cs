@@ -24,8 +24,6 @@ namespace DecoratorValidation.DateValidation.Validators
 
         public override bool Validate(DateTime toValidate)
         {
-           
-
             isValid =  toValidate > _expected;
 
             AppendErrorMessage(_errorMessage);

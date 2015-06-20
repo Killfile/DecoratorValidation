@@ -60,6 +60,9 @@
     <Compile Include="DateValidation\DateValidator_AfterTests.cs" />
     <Compile Include="DateValidation\DateValidator_BeforeTests.cs" />
     <Compile Include="DateValidation\DateValidator_ExpectedValueTests.cs" />
+    <Compile Include="FloatValidation\FloatValidator_WithinTests.cs" />
+    <Compile Include="FloatValidation\FloatValidator_GreaterThanTests.cs" />
+    <Compile Include="FloatValidation\FloatValidator_LessThanTests.cs" />
     <Compile Include="IntValidation\IntValidator_GreaterThanTests.cs" />
     <Compile Include="IntValidation\IntValidator_LessThanTests.cs" />
     <Compile Include="LamdaValidation\LamdaValidationTests.cs" />

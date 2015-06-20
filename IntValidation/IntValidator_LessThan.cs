@@ -27,8 +27,6 @@ namespace DecoratorValidation.IntValidation.Validators
 
         public override bool Validate(int toValidate)
         {
-            
-
             isValid =  toValidate < CeilingValue || (LessThanOrEqualTo && toValidate == CeilingValue);
 
             AppendErrorMessage(_errorMessage);

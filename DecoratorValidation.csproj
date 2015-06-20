@@ -59,6 +59,9 @@
     <Compile Include="DateValidation\DateValidator_After.cs" />
     <Compile Include="DateValidation\DateValidator_Before.cs" />
     <Compile Include="DateValidation\DateValidator_ExpectedValue.cs" />
+    <Compile Include="FloatValidation\FloatValidator_Within.cs" />
+    <Compile Include="FloatValidation\FloatValidator_LessThan.cs" />
+    <Compile Include="FloatValidation\FloatValidator_GreaterThan.cs" />
     <Compile Include="IntValidation\IntValidator_GreaterThan.cs" />
     <Compile Include="IntValidation\IntValidator_LessThan.cs" />
     <Compile Include="LamdaValidation\LamdaValidator.cs" />
@@ -83,9 +86,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
