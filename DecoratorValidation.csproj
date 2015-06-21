@@ -84,7 +84,9 @@
     <Compile Include="StringValidation\StringValidator_WhiteList.cs" />
     <Compile Include="StringValidation\StringValidator_XMLWellFormed.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="LICENSE.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
