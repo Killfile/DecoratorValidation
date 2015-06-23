@@ -81,6 +81,7 @@
     <Compile Include="StringValidation\StringValidator_MinUpperCaseCharsTests.cs" />
     <Compile Include="StringValidation\StringValidator_NotEmptyTests.cs" />
     <Compile Include="StringValidation\StringValidator_RegExTests.cs" />
+    <Compile Include="StringValidation\StringValidator_EndsWithTests.cs" />
     <Compile Include="StringValidation\StringValidator_StartsWithTests.cs" />
     <Compile Include="StringValidation\StringValidator_WhiteListTests.cs" />
     <Compile Include="StringValidation\StringValidator_XMLWellFormedTests.cs" />

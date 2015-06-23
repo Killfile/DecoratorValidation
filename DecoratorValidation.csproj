@@ -69,6 +69,7 @@
     <Compile Include="LogicalValidation\LogicalValidator_Any.cs" />
     <Compile Include="LogicalValidation\LogicalValidator_Or.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringValidation\StringValidator_EndsWith.cs" />
     <Compile Include="StringValidation\StringValidator_StartsWith.cs" />
     <Compile Include="StringValidation\StringValidator_MinLowerCaseChars.cs" />
     <Compile Include="StringValidation\StringValidator_MinUpperCaseChars.cs" />
