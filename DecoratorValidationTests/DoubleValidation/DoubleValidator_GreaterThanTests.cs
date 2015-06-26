@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DecoratorValidation.IntValidation.Validators;
+using DecoratorValidation.DoubleValidation.Validators;
 using NUnit.Framework;
 using DecoratorValidation.Core;
-namespace DecoratorValidation.IntValidation.Validators.Tests
+namespace DecoratorValidation.DoubleValidation.Validators.Tests
 {
     [TestFixture()]
-    public class IntValidator_GreaterThanTests
+    public class DoubleValidator_GreaterThanTests
     {
         private StringBuilder errorAccumulator;
 
@@ -26,22 +26,22 @@ namespace DecoratorValidation.IntValidation.Validators.Tests
         [TestCase(2, 1, false, true)]
         [TestCase(1, 2, true, false)]
         [TestCase(1, 2, false, false)]
-        public void WhenIntValidator_GreaterThanValidates(int toValidate, int bound, bool orEqualTo, bool expectedResult)
+        public void WhenDoubleValidator_GreaterThanValidates(double toValidate, double bound, bool orEqualTo, bool expectedResult)
         {
-            string errorMessage = "IntValidator_GreaterThan Failed";
-            Validator<int> validator = new ValidatorBaseCase<int>();
-            validator = new IntValidator_GreaterThan(validator, bound, orEqualTo, errorMessage);
+            string errorMessage = "DoubleValidator_GreaterThan Failed";
+            Validator<double> validator = new ValidatorBaseCase<double>();
+            validator = new DoubleValidator_GreaterThan(validator, bound, orEqualTo, errorMessage);
             bool actual = validator.Validate(toValidate);
             Assert.That(actual, Is.EqualTo(expectedResult));
         }
 
         [Test()]
         [TestCase(1, 1, false)]
-        public void WhenIntValidator_GreaterThanFails_ErrorMessageIsGenerated(int toValidate, int bound, bool orEqualTo)
+        public void WhenDoubleValidator_GreaterThanFails_ErrorMessageIsGenerated(double toValidate, double bound, bool orEqualTo)
         {
-            string errorMessage = "IntValidator_GreaterThan Failed";
-            Validator<int> validator = new ValidatorBaseCase<int>();
-            validator = new IntValidator_GreaterThan(validator, bound, orEqualTo, errorMessage);
+            string errorMessage = "DoubleValidator_GreaterThan Failed";
+            Validator<double> validator = new ValidatorBaseCase<double>();
+            validator = new DoubleValidator_GreaterThan(validator, bound, orEqualTo, errorMessage);
             bool actual = validator.Validate(toValidate);
             Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
         }

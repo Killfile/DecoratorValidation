@@ -60,11 +60,12 @@
     <Compile Include="DateValidation\DateValidator_AfterTests.cs" />
     <Compile Include="DateValidation\DateValidator_BeforeTests.cs" />
     <Compile Include="DateValidation\DateValidator_ExpectedValueTests.cs" />
-    <Compile Include="FloatValidation\FloatValidator_WithinTests.cs" />
-    <Compile Include="FloatValidation\FloatValidator_GreaterThanTests.cs" />
-    <Compile Include="FloatValidation\FloatValidator_LessThanTests.cs" />
-    <Compile Include="IntValidation\IntValidator_GreaterThanTests.cs" />
-    <Compile Include="IntValidation\IntValidator_LessThanTests.cs" />
+    <Compile Include="DecimalValidation\DecimalValidator_WithinTests.cs" />
+    <Compile Include="DecimalValidation\DecimalValidator_GreaterThanTests.cs" />
+    <Compile Include="DecimalValidation\DecimalValidator_LessThanTests.cs" />
+    <Compile Include="DoubleValidation\DoubleValidator_WithinTests.cs" />
+    <Compile Include="DoubleValidation\DoubleValidator_GreaterThanTests.cs" />
+    <Compile Include="DoubleValidation\DoubleValidator_LessThanTests.cs" />
     <Compile Include="LambdaValidation\LamdaValidationTests.cs" />
     <Compile Include="LogicalValidatation\LogicalValidator_AnyTests.cs" />
     <Compile Include="LogicalValidatation\LogicalValidator_OrTests.cs" />

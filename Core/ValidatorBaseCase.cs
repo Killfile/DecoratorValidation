@@ -13,8 +13,6 @@ namespace DecoratorValidation.Core
             errorAccumulator = new StringBuilder();
         }
 
-
-
         public override bool Validate(T toValidate)
         {
             return true;

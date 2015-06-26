@@ -2,22 +2,22 @@
 using System;
 using System.Text;
 
-namespace DecoratorValidation.FloatValidation.Validators
+namespace DecoratorValidation.DecimalValidation.Validators
 {
-    public class FloatValidator_Within : ValidatorDecorator<float>
+    public class DecimalValidator_Within : ValidatorDecorator<decimal>
     {
         private readonly String _errorMessage;
-        private readonly float TargetValue;
-        private readonly float Delta;
+        private readonly decimal TargetValue;
+        private readonly decimal Delta;
 
         /// <summary>
-        /// Creates a validator for float comparison
+        /// Creates a validator for decimal comparison
         /// </summary>
-        /// <param name="a">A float validator - this system uses the decorator pattern</param>
+        /// <param name="a">A decimal validator - this system uses the decorator pattern</param>
         /// <param name="target">The value to compare against</param>
         /// <param name="delta">The allowable deviation from the target value.</param>
         /// <param name="ErrorMessage">The error message that will be generated if validation fails</param>
-        public FloatValidator_Within(Validator<float> a, float target, float delta, String ErrorMessage)
+        public DecimalValidator_Within(Validator<decimal> a, decimal target, decimal delta, String ErrorMessage)
             : base(a)
         {
             _errorMessage = ErrorMessage;
@@ -25,7 +25,7 @@ namespace DecoratorValidation.FloatValidation.Validators
             this.Delta = delta;
         }
 
-        public override bool Validate(float toValidate)
+        public override bool Validate(decimal toValidate)
         {
             isValid = Math.Abs(toValidate - TargetValue) <= Math.Abs(Delta);
 
