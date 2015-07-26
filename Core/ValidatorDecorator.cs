@@ -8,19 +8,19 @@ namespace DecoratorValidation.Core
 {
     public abstract class ValidatorDecorator<T> : Validator<T>
     {
-        protected Validator<T> argument;
+        protected Validator<T> innerValidator;
         protected bool isValid;
 
         protected ValidatorDecorator(Validator<T> a)
         {
-            argument = a;
+            innerValidator = a;
             errorAccumulator = a.errorAccumulator;
         }
 
         public override bool Validate(T toValidate)
         {
-            if (argument != null)
-                return argument.Validate(toValidate);
+            if (innerValidator != null)
+                return innerValidator.Validate(toValidate);
             return true;
         }
 
