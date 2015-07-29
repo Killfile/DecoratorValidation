@@ -16,8 +16,9 @@ namespace DecoratorValidation.LambdaValidation.Validators
             _predicate = predicate;
         }
 
-        public override bool Validate(T toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            T toValidate = Cast(toValidateObj);
             isValid = _predicate(toValidate);
             AppendErrorMessage(_errorMessage);
             return isValid && base.Validate(toValidate);

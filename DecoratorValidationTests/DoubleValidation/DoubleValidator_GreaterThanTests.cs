@@ -35,6 +35,8 @@ namespace DecoratorValidation.DoubleValidation.Validators.Tests
             Assert.That(actual, Is.EqualTo(expectedResult));
         }
 
+
+
         [Test()]
         [TestCase(1, 1, false)]
         public void WhenDoubleValidator_GreaterThanFails_ErrorMessageIsGenerated(double toValidate, double bound, bool orEqualTo)
@@ -44,6 +46,25 @@ namespace DecoratorValidation.DoubleValidation.Validators.Tests
             validator = new DoubleValidator_GreaterThan(validator, bound, orEqualTo, errorMessage);
             bool actual = validator.Validate(toValidate);
             Assert.That(validator.ErrorMessage, Is.EqualTo(errorMessage));
+        }
+
+        [Test]
+        [TestCase(5.5, typeof(int), Result=true, Description="Rounds to 6")]
+        [TestCase(5.5, typeof(sbyte), Result = true, Description = "Rounds to 6")]
+        [TestCase(5.5, typeof(byte), Result = true, Description = "Rounds to 6")]
+        [TestCase(5.5, typeof(short), Result = true, Description = "Rounds to 6")]
+        [TestCase(5.5, typeof(ushort), Result = true, Description = "Rounds to 6")]
+        [TestCase(5.5, typeof(uint), Result = true, Description = "Rounds to 6")]
+        [TestCase(5.5, typeof(long), Result = true, Description = "Rounds to 6")]
+        [TestCase(5.5, typeof(float), Result = true, Description = "Rounds to 6")]
+        public bool WhenDoubleValidatorIsUsedWithType(double baseValue, Type type)
+        {
+            string errorMessage = "DoubleValidator_GreaterThan Failed";
+            var testValue = Convert.ChangeType(baseValue, type);
+                        
+            Validator<double> validator = new ValidatorBaseCase<double>();
+            validator = new DoubleValidator_GreaterThan(validator, 5, false, errorMessage);
+            return validator.Validate(testValue);
         }
     }
 }

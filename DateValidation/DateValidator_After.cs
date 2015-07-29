@@ -22,8 +22,9 @@ namespace DecoratorValidation.DateValidation.Validators
             _expected = earlierBound;
         }
 
-        public override bool Validate(DateTime toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            DateTime toValidate = Cast(toValidateObj);
             isValid =  toValidate > _expected;
 
             AppendErrorMessage(_errorMessage);

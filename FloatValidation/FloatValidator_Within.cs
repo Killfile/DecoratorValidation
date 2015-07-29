@@ -26,8 +26,9 @@ namespace DecoratorValidation.FloatValidation.Validators
             this.Delta = delta;
         }
 
-        public override bool Validate(float toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            float toValidate = Cast(toValidateObj);
             isValid = Math.Abs(toValidate - TargetValue) <= Math.Abs(Delta);
 
             AppendErrorMessage(_errorMessage);

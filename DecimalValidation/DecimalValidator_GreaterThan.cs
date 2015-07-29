@@ -26,8 +26,9 @@ namespace DecoratorValidation.DecimalValidation.Validators
             this.GreaterThanOrEqualTo = greaterThanOrEqualTo;
         }
 
-        public override bool Validate(decimal toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            decimal toValidate = Convert.ToDecimal(toValidateObj);
             isValid =  toValidate > FloorValue || (GreaterThanOrEqualTo == true && toValidate == FloorValue);
 
             AppendErrorMessage(_errorMessage);

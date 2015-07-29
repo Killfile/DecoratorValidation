@@ -25,8 +25,9 @@ namespace DecoratorValidation.DoubleValidation.Validators
             this.LessThanOrEqualTo = lessThanOrEqualTo;
         }
 
-        public override bool Validate(double toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            double toValidate = Convert.ToDouble(toValidateObj);
             isValid =  toValidate < CeilingValue || (LessThanOrEqualTo && toValidate == CeilingValue);
 
             AppendErrorMessage(_errorMessage);

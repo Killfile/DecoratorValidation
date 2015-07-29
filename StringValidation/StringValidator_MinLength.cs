@@ -16,9 +16,9 @@ namespace DecoratorValidation.StringValidation.Validators
             _minLength = minLength;
         }
 
-        public override bool Validate(String toValidate)
+        public override bool Validate(object toValidateObj)
         {
-            
+            String toValidate = Cast(toValidateObj);
             isValid =  toValidate.Length >= _minLength;
 
             AppendErrorMessage(_errorMessage);

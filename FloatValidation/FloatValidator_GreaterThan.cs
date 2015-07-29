@@ -17,6 +17,7 @@ namespace DecoratorValidation.FloatValidation.Validators
         /// <param name="floorValue">The value to compare against</param>
         /// <param name="greaterThanOrEqualTo">Set this to true if the comparison should be inclusive of the floor value</param>
         /// <param name="ErrorMessage">The error message that will be generated if validation fails</param>
+        [Obsolete("Use the double or decimial validators instead.")]
         public FloatValidator_GreaterThan(Validator<float> a, float floorValue, bool greaterThanOrEqualTo, String ErrorMessage)
             : base(a)
         {
@@ -25,8 +26,9 @@ namespace DecoratorValidation.FloatValidation.Validators
             this.GreaterThanOrEqualTo = greaterThanOrEqualTo;
         }
 
-        public override bool Validate(float toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            float toValidate = Cast(toValidateObj);
             isValid =  toValidate > FloorValue || (GreaterThanOrEqualTo == true && toValidate == FloorValue);
 
             AppendErrorMessage(_errorMessage);

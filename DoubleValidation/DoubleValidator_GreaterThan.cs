@@ -25,8 +25,9 @@ namespace DecoratorValidation.DoubleValidation.Validators
             this.GreaterThanOrEqualTo = greaterThanOrEqualTo;
         }
 
-        public override bool Validate(double toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            double toValidate = Convert.ToDouble(toValidateObj);
             isValid =  toValidate > FloorValue || (GreaterThanOrEqualTo == true && toValidate == FloorValue);
 
             AppendErrorMessage(_errorMessage);

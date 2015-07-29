@@ -14,9 +14,9 @@ namespace DecoratorValidation.StringValidation.Validators
             _errorMessage = errorMessage;
         }
 
-        public override bool Validate(String toValidate)
+        public override bool Validate(object toValidateObj)
         {
-            
+            string toValidate = (string)toValidateObj;
             isValid = toValidate != null && toValidate.Trim() != string.Empty;
 
             AppendErrorMessage(_errorMessage);

@@ -12,9 +12,12 @@ namespace DecoratorValidation.Core
         internal StringBuilder errorAccumulator;
 
 
-        public abstract bool Validate(T toValidate);
+        public abstract bool Validate(object toValidate);
 
-
+        protected T Cast(object toValidate)
+        {
+            return (T)toValidate;
+        }
 
         public string ErrorMessage { get {
             return errorAccumulator.ToString();

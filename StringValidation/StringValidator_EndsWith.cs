@@ -18,8 +18,9 @@ namespace DecoratorValidation.StringValidation.Validators
             _isCaseSensitive = isCaseSensitive;
         }
 
-        public override bool Validate(String toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            String toValidate = Cast(toValidateObj);
             isValid =  _isCaseSensitive ? toValidate.EndsWith(_expectedString) : toValidate.ToLower().EndsWith(_expectedString.ToLower());
             AppendErrorMessage(_errorMessage);
 

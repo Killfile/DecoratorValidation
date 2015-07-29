@@ -6,7 +6,7 @@ using System.Text;
 namespace DecoratorValidation.Core
 {
     [Serializable]
-    class AccumulatorNotInitializedException : Exception
+    public class AccumulatorNotInitializedException : Exception
     {
     }
 }

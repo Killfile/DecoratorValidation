@@ -26,9 +26,9 @@ namespace DecoratorValidation.IntValidation.Validators
             this.GreaterThanOrEqualTo = greaterThanOrEqualTo;
         }
 
-        public override bool Validate(int toValidate)
+        public override bool Validate(object toValidateObj)
         {
-            
+            int toValidate = Cast(toValidateObj);
 
             isValid =  toValidate > FloorValue || (GreaterThanOrEqualTo == true && toValidate == FloorValue);
 

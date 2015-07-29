@@ -19,8 +19,9 @@ namespace DecoratorValidation.LogicalValidation
             _list = list;
         }
 
-        public override bool Validate(T toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            T toValidate = Cast(toValidateObj);
             isValid = _list.Any(i => i.Validate(toValidate));
             AppendErrorMessage(_errorMessage);
             return isValid && base.Validate(toValidate);

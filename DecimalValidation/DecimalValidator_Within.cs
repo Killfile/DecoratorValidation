@@ -25,8 +25,9 @@ namespace DecoratorValidation.DecimalValidation.Validators
             this.Delta = delta;
         }
 
-        public override bool Validate(decimal toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            decimal toValidate = Convert.ToDecimal(toValidateObj);
             isValid = Math.Abs(toValidate - TargetValue) <= Math.Abs(Delta);
 
             AppendErrorMessage(_errorMessage);

@@ -17,10 +17,10 @@ namespace DecoratorValidation.StringValidation.Validators
             _errorMessage = errorMessage;
         }
 
-        public override bool Validate(String toValidate)
+        public override bool Validate(object toValidateObj)
         {
-           
 
+            String toValidate = Cast(toValidateObj);
             isValid =  !_blackList.Contains(toValidate);
 
             AppendErrorMessage(_errorMessage);

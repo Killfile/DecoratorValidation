@@ -26,8 +26,9 @@ namespace DecoratorValidation.IntValidation.Validators
             this.LessThanOrEqualTo = lessThanOrEqualTo;
         }
 
-        public override bool Validate(int toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            int toValidate = Cast(toValidateObj);
             isValid =  toValidate < CeilingValue || (LessThanOrEqualTo && toValidate == CeilingValue);
 
             AppendErrorMessage(_errorMessage);

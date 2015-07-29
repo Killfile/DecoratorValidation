@@ -10,19 +10,25 @@ namespace DecoratorValidation.LogicalValidation
     public class LogicalValidator_Or<T> : ValidatorDecorator<T> 
     {
         private string _errorMessage;
-        private Validator<T> _left;
-        private Validator<T> _right;
-
+        private List<Validator<T>> _validators;
+        
         public LogicalValidator_Or(Validator<T> a, Validator<T> left, Validator<T> right, String errorMessage) : base(a)
         {
             _errorMessage = errorMessage;
-            _left = left;
-            _right = right;
+            _validators = new List<Validator<T>> {
+                left, right
+            };
         }
 
-        public override bool Validate(T toValidate)
+        public LogicalValidator_Or(Validator<T> a, List<Validator<T>> validators, String errorMessage) : base(a) {
+            _errorMessage = errorMessage;
+            _validators = validators;
+        }
+
+        public override bool Validate(object toValidateObj)
         {
-            isValid = _left.Validate(toValidate) || _right.Validate(toValidate);
+            T toValidate = Cast(toValidateObj);
+            isValid = _validators.Any(v => v.Validate(toValidate));
             AppendErrorMessage(_errorMessage);
             return isValid && base.Validate(toValidate);
         }

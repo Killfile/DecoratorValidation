@@ -16,8 +16,9 @@ namespace DecoratorValidation.StringValidation.Validators
 
 
 
-        public override bool Validate(string toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            String toValidate = Cast(toValidateObj);
             try
             {
                 if (string.IsNullOrEmpty(toValidate))

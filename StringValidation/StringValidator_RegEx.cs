@@ -17,9 +17,9 @@ namespace DecoratorValidation.StringValidation.Validators
             _errorMessage = errorMessage;
         }
 
-        public override bool Validate(String toValidate)
+        public override bool Validate(object toValidateObj)
         {
-            
+            String toValidate = Cast(toValidateObj);
 
             Regex pattern = new Regex(_regEx);
             isValid =  pattern.IsMatch(toValidate);

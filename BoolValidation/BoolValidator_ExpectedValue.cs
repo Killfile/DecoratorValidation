@@ -22,9 +22,9 @@ namespace DecoratorValidation.BoolValidation.Validators
             _expected = expected;
         }
 
-        public override bool Validate(bool toValidate)
+        public override bool Validate(object toValidateObj)
         {
-         
+            bool toValidate = Cast(toValidateObj);
             isValid =  toValidate == _expected;
             AppendErrorMessage(_errorMessage);
 

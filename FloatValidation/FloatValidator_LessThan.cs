@@ -17,6 +17,7 @@ namespace DecoratorValidation.FloatValidation.Validators
         /// <param name="ceilingValue">The value to compare against</param>
         /// <param name="lessThanOrEqualTo">Set this to true if the comparison should be inclusive of the ceiling value</param>
         /// <param name="ErrorMessage">The error message that will be generated if validation fails</param>
+        [Obsolete("Use the double or decimial validators instead.")]
         public FloatValidator_LessThan(Validator<float> a, float ceilingValue, bool lessThanOrEqualTo, String ErrorMessage)
             : base(a)
         {
@@ -25,8 +26,9 @@ namespace DecoratorValidation.FloatValidation.Validators
             this.LessThanOrEqualTo = lessThanOrEqualTo;
         }
 
-        public override bool Validate(float toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            float toValidate = Cast(toValidateObj);
             isValid = toValidate < CeilingValue || (LessThanOrEqualTo == true && toValidate == CeilingValue);
 
             AppendErrorMessage(_errorMessage);

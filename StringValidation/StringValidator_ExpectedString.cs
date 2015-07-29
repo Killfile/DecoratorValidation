@@ -16,8 +16,9 @@ namespace DecoratorValidation.StringValidation.Validators
             _errorMessage = errorMessage;
         }
 
-        public override bool Validate(String toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            String toValidate = Cast(toValidateObj);
             isValid = toValidate == _expectedString;
 
             AppendErrorMessage(_errorMessage);

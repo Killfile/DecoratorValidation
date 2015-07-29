@@ -25,8 +25,9 @@ namespace DecoratorValidation.DoubleValidation.Validators
             this.Delta = delta;
         }
 
-        public override bool Validate(double toValidate)
+        public override bool Validate(object toValidateObj)
         {
+            double toValidate = Convert.ToDouble(toValidateObj);
             isValid = Math.Abs(toValidate - TargetValue) <= Math.Abs(Delta);
 
             AppendErrorMessage(_errorMessage);

@@ -17,7 +17,7 @@ namespace DecoratorValidation.Core
             errorAccumulator = a.errorAccumulator;
         }
 
-        public override bool Validate(T toValidate)
+        public override bool Validate(object toValidate)
         {
             if (innerValidator != null)
                 return innerValidator.Validate(toValidate);
